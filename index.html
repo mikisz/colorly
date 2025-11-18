@@ -3,10 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Colorly File Converter</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="container">
+        <header>
+            <h1>File Converter</h1>
+            <p class="subtitle">Convert your files with ease</p>
+        </header>
+
+        <main>
+            <div class="converter-card">
+                <div class="format-selector">
+                    <div class="format-group">
+                        <label for="fromFormat">From:</label>
+                        <select id="fromFormat" class="format-select">
+                            <option value="eps">EPS</option>
+                        </select>
+                    </div>
+
+                    <div class="arrow">→</div>
+
+                    <div class="format-group">
+                        <label for="toFormat">To:</label>
+                        <select id="toFormat" class="format-select">
+                            <option value="svg">SVG</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="fileInput" accept=".eps" hidden>
+                    <div class="upload-content">
+                        <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <p class="upload-text">Drag & drop your file here</p>
+                        <p class="upload-subtext">or</p>
+                        <button class="btn btn-primary" id="browseBtn">Browse Files</button>
+                        <p class="file-info" id="fileInfo"></p>
+                    </div>
+                </div>
+
+                <button class="btn btn-convert" id="convertBtn" disabled>
+                    Convert File
+                </button>
+
+                <div class="progress-container" id="progressContainer" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p class="progress-text" id="progressText">Converting...</p>
+                </div>
+
+                <div class="result-container" id="resultContainer" style="display: none;">
+                    <div class="success-message">
+                        <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Conversion successful!</span>
+                    </div>
+                    <button class="btn btn-download" id="downloadBtn">
+                        Download Converted File
+                    </button>
+                </div>
+
+                <div class="error-container" id="errorContainer" style="display: none;">
+                    <div class="error-message">
+                        <span id="errorMessage"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>Available Conversions</h2>
+                <div id="conversionsList" class="conversions-list">
+                    <p>Loading...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
