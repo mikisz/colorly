@@ -64,11 +64,16 @@ function setupEventListeners() {
   // Browse button click
   browseBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    e.stopPropagation(); // Prevent event from bubbling to uploadArea
     fileInput.click();
   });
 
-  // Upload area click
-  uploadArea.addEventListener('click', () => {
+  // Upload area click (but not when clicking the button)
+  uploadArea.addEventListener('click', (e) => {
+    // Don't trigger if clicking the browse button
+    if (e.target === browseBtn || browseBtn.contains(e.target)) {
+      return;
+    }
     fileInput.click();
   });
 
